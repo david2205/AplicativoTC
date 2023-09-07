@@ -4,6 +4,7 @@ import userModel from '../models/userModel.js'
 
 export async function createEvent(req, res) {
   const { title, description, numberOfPeople, dateStart, dateEnd } = req.body
+
   try {
     const event = await eventModel.create({
       title,
@@ -111,7 +112,7 @@ export async function getEvents(req, res) {
     let events = await eventModel.findAll({
       where: {
         dateStart: {
-          [Op.eq]: date
+          [Op.gte]: date
         }
       },
       include: {
@@ -158,7 +159,7 @@ export async function getEventsWithUsers(req, res) {
     const events = await eventModel.findAll({
       where: {
         dateStart: {
-          [Op.eq]: date
+          [Op.gte]: date
         }
       },
       include: {
@@ -195,7 +196,7 @@ export async function cancelRequest(req, res) {
     await event.removeUsers(uuid)
 
     return res.status(200).json({
-      success: false,
+      success: true,
       message: 'Se ha eliminado el evento'
     })
   } catch (error) {

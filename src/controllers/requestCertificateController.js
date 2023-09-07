@@ -5,7 +5,6 @@ import marriageCertificateModel from '../models/marriageCertificateModel.js'
 import userModel from '../models/userModel.js'
 
 async function findCertificateToType(data, type) {
-  console.log(data)
   let certificate
   switch (type) {
     case 'CONFIRMACION':

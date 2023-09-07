@@ -11,7 +11,8 @@ const MYSQL_HOST = process.env.MYSQL_HOST
 const sequelize = new Sequelize(MYSQL_DATABASE, MYSQL_USER, MYSQL_PASSWORD, {
   host: MYSQL_HOST,
   dialect: 'mysql',
-  logging: false
+  logging: false,
+  timezone: '-05:00'
 })
 
 export default sequelize
